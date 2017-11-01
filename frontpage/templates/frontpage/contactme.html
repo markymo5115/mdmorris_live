@@ -1,0 +1,12 @@
+{% extends "my_zinnia_bootstrap:zinnia/navigation.html" %}
+{% block my_content %}
+<div class="container-fluid">
+	<div class="row">
+		<div id="frontpage" class="hfeed col-xs-12 col-sm-12 col-md-12 col-lg-12" style="text-align:left;">
+			{% block introduction_text %}
+				{{ intro.text|safe }}
+			{% endblock introduction_text %}
+		</div>
+	</div>
+</div>
+{% endblock my_content %}

@@ -1,0 +1,18 @@
+{% extends "my_zinnia_bootstrap:zinnia/navigation.html" %}
+{% block my_content %}
+<div class="container-fluid">
+	<div class="row">
+		<div id="front-image" class="hfeed col-xs-12 col-sm-3 col-md-3 col-lg-3">
+			{% block introduction_image %}
+				<img src="{{ intro.image.url }}" alt="{{ intro.title }}" class="img-thumbnail" />
+				<div> {{ intro.image_description|safe }} </div>
+			{% endblock introduction_image %}
+		</div>
+		<div id="frontpage" class="hfeed col-xs-12 col-sm-9 col-md-9 col-lg-9" style="text-align:left;">
+			{% block introduction_text %}
+				{{ intro.text|safe }}
+			{% endblock introduction_text %}
+		</div>
+	</div>
+</div>
+{% endblock my_content %}

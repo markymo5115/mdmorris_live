@@ -1,0 +1,32 @@
+body{
+	background: white ;
+}
+
+.navbar{
+	border-radius: 0;
+}
+
+.navbar-header{
+	background: url('/static/images/header.png');
+	background-position: right;
+	background-repeat: no-repeat;
+	background-color: transparent;
+        width: 100%;	
+	}
+
+.navbar-brand{
+	font-family: 'Satisfy';
+	background: url('/static/images/logo.png');
+	height: 165px;
+	width: 207px;
+}
+
+.my_signiature{
+	font-family: 'Satisfy';
+	text-align: center;
+}
+
+div.row img.thumbnail {
+	margin-bottom: 5px;
+	display: inline-block;
+}

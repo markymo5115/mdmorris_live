@@ -1,10 +1,4 @@
 {% load staticfiles %}
-body_tester{
-	background: white ;
-        background: url('{% static "zinnia_bootstrap/img/background_sample.jpg" %}');
-	background-color: transparent;
-        background-position: center;
-}
 
 body{
 	background: white;
@@ -19,26 +13,35 @@ body{
 	background-position: right;
 	background-repeat: no-repeat;
 	background-color: transparent;
+	background-size:contain;
         width: 100%;	
 	text-align: right;
 	}
 
-.navbar-brand2{
-	font-family: 'Satisfy';
+.navbar-brand {
 	background: url('{% static "zinnia_bootstrap/img/logo.png" %}');
-	height: 165px;
-	width: 207px;
+	background-repeat: no-repeat;
+	background-position: left;
+	background-size:contain;	
+	height: 150px;
+	width: 150px;
 }
 
-.navbar-brand{
-	font-family: 'Times-Roman';
-	color:yellow;
-}
 
-.my_signiature{
-	font-family: 'Satisfy';
-	text-align: center;
-}
+
+@media (max-width: 767px) {
+	.navbar-brand {
+		height: 100px;
+		width: 100px;
+	}
+}	
+
+@media (max-width:400px) {
+	.navbar-brand {
+		height: 50px;
+		width: 50px;
+	}
+}	
 
 div.row img.thumbnail {
 	margin-bottom: 1px;
@@ -47,6 +50,7 @@ div.row img.thumbnail {
 	display: inline-block;
 	border: None;
 }
+
 
 .img-thumbnail {
 	border: None;

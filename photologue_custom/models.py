@@ -24,18 +24,18 @@ class GalleryExtended(models.Model):
 	def get_absolute_url(self):
   	   return reverse('gallery', args=[self.gallery.slug])
 
-class MyGallery(Gallery):
-
-	class Meta:
-		proxy = True
-	
-	def get_absolute_url(self):
-	   return reverse('gallery', args=[self.slug])
-
-class MyPhoto(Photo):
-	
-	class Meta:
-		proxy = True
-
-	def get_absolute_url(self):
-	   return reverse('photo', args=[self.slug])
+#class MyGallery(Gallery):
+#
+#	class Meta:
+#		proxy = True
+#	
+#	def get_absolute_url(self):
+#	   return reverse('gallery', args=[self.slug])
+#
+#class MyPhoto(Photo):
+#	
+#	class Meta:
+#		proxy = True
+#
+#	def get_absolute_url(self):
+##	   return reverse('photo', args=[self.slug])

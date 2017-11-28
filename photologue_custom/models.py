@@ -1,9 +1,14 @@
 from django.db import models
+from django.utils.translation import ugettext_lazy as _
+from django.conf import settings
+from django.core.urlresolvers import reverse
+
+#from sortedm2m.fields import SortedManyToManyField
 
 from taggit.managers import TaggableManager
 
 from photologue.models import Gallery, Photo
-
+from photologue.managers import GalleryQuerySet, PhotoQuerySet
 
 class GalleryExtended(models.Model):
 
@@ -24,18 +29,22 @@ class GalleryExtended(models.Model):
 	def get_absolute_url(self):
   	   return reverse('gallery', args=[self.gallery.slug])
 
-#class MyGallery(Gallery):
-#
-#	class Meta:
-#		proxy = True
-#	
+class MyGallery(Gallery):
+
+   class Meta:
+      proxy = True
+
+   def public(self):
+      """Return a queryset of all the public photos in this gallery. And put them in reverse order, ie. earliest date taken first."""
+      temp = self.photos.is_public().filter(sites__id=settings.SITE_ID)
+      return temp.order_by('date_added')
+
 #	def get_absolute_url(self):
-#	   return reverse('gallery', args=[self.slug])
-#
+#	   return reverse('photologue-custom:pl-projects', args=[self.slug])
+
 #class MyPhoto(Photo):
 #	
 #	class Meta:
 #		proxy = True
+#		ordering = ['date_added']
 #
-#	def get_absolute_url(self):
-##	   return reverse('photo', args=[self.slug])

@@ -32,6 +32,8 @@ from zinnia.sitemaps import CategorySitemap
 from zinnia.sitemaps import EntrySitemap
 from zinnia.sitemaps import TagSitemap
 
+import photologue_custom
+
 urlpatterns = [
    url(r'^home', frontpage_views.home_view, name='home'),
    url(r'^about-me', frontpage_views.aboutme_view, name='about_me'),
@@ -48,6 +50,7 @@ urlpatterns = [
     url(r'^comments/', include('django_comments.urls')),
     url(r'^xmlrpc/$', handle_xmlrpc),
     url(r'^i18n/', include('django.conf.urls.i18n')),
+    url(r'^projects/', include('photologue_custom.urls', namespace='photologue-custom')),
     url(r'^explore/', include('photologue.urls', namespace='photologue')),
     url(r'^$', RedirectView.as_view(url='home', permanent=True))
 ] 

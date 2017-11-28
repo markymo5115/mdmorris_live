@@ -54,6 +54,16 @@
 					<li class="sub-page"><a href="{% url 'photologue:pl-gallery' slug='miniature-paintings' %}">Miniature Paintings</a></li>
 					</ul>
 			    </li>
+			   <li class="projects dropdown">
+				<a data-target="#" href="" class="dropdown-toggle" data-toggle="dropdown">
+			            Projects<b class="caret"></b>
+			        </a>
+					<ul class="dropdown-menu">
+
+					<li class="sub-page"><a href="{% url 'photologue-custom:pl-projects' slug='enamel-cross-project' %}">Enamel Cross</a></li>
+			    </li>
+			   </ul>
+			</li>
 			
 			   {% url 'zinnia:entry_archive_index' as entry_archive_index_url %}
 		   	   <li class="blog{% if entry_archive_index_url in request.path %} active{% endif %}">

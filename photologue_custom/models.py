@@ -8,20 +8,14 @@ from sortedm2m.fields import SortedManyToManyField
 from taggit.managers import TaggableManager
 
 from photologue.models import Gallery, Photo
-from .managers import GalleryQuerySet, PhotoQuerySet
 
 class GalleryExtended(models.Model):
 
-	objects = GalleryQuerySet.as_manager()
 	# Link back to Photologue's Gallery model.
 	gallery = models.OneToOneField(Gallery, related_name='extended')
 
-
 	# This is the important bit - where we add in the tags.
 	tags = TaggableManager(blank=True)
-
-	# True if the gallery is a project gallery
-	isProjectGallery = models.BooleanField(default=False)
 
 	# Boilderplate code to make a prettier display in the admin interface.
 	class Meta:
@@ -33,10 +27,6 @@ class GalleryExtended(models.Model):
 
 	def get_absolute_url(self):
   	   return reverse('gallery', args=[self.gallery.slug])
-
-#	@property
-#	def photos(self):
-#		return self.photos.order_by('data_added')
 
 
 def map_to_proxy(instance, proxy_class):
@@ -67,7 +57,7 @@ class MyGallery(Gallery):
 
 
 class MyPhoto(Photo):
-
+    """Created this proxy model so that the ordering is chronologically increasing. A simpler method would be to change photologues own manager methods but then is would be difficult to keep the urls for projects sepparate"""
     class Meta:
         proxy = True
         ordering = ['date_added']

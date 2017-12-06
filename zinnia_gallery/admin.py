@@ -4,6 +4,7 @@ from django import forms
 
 from ckeditor.widgets import CKEditorWidget
 from zinnia.models.entry import Entry
+
 from zinnia.admin.entry import EntryAdmin
 
 #from .models import Gallery, Picture
@@ -30,7 +31,6 @@ class EntryGalleryAdmin(EntryAdmin):
 			'classes': ('collapse', 'collapse-closed',)}),) + \
 		EntryAdmin.fieldsets[2:]
 
+
 admin.site.register(Entry, EntryGalleryAdmin)
-#admin.site.register(Gallery)
-#admin.site.register(Picture)
 

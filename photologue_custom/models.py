@@ -14,6 +14,9 @@ class GalleryExtended(models.Model):
 	# Link back to Photologue's Gallery model.
 	gallery = models.OneToOneField(Gallery, related_name='extended')
 
+	# state if it is a project gallery
+	isProjectGallery = models.BooleanField(default = False)
+
 	# This is the important bit - where we add in the tags.
 	tags = TaggableManager(blank=True)
 
@@ -100,7 +103,7 @@ class MyPhoto(Photo):
         """Return the public galleries to which this photo belongs."""
         temp = self.galleries.filter(is_public=True)
 #        for i in range(0,len(temp)):
-#           if temp[i].isProjectGallery:
+#           if temp[i].galleryextended.isProjectGallery:
 #              temp[i]=map_to_proxy(temp[i],MyGallery)
         temp = [map_to_proxy(temp[i], MyGallery) for i in range(0, len(temp))]
         return temp
@@ -108,3 +111,4 @@ class MyPhoto(Photo):
 
     def get_absolute_url(self):
        return reverse('photologue-custom:pl-projects-photo', args=[self.slug])
+

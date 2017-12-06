@@ -1,13 +1,15 @@
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from photologue.models import Photo
+from taggit.managers import TaggableManager
 
 
 class Introduction(models.Model):
-	title = models.CharField(max_length=200, verbose_name='Title', unique=True)
-	slug = models.CharField(max_length=200, 
-				verbose_name='slug',
-				default=title)
+	title = models.CharField(_('Title'), max_length=200, unique=True)
+	slug = models.CharField(_('Slug'), max_length=200,
+				unique=True,
+				blank=True)
+	
 	text = models.TextField(verbose_name="Text")
 	picture = models.ForeignKey(Photo, null=True, blank=True)
 	image_caption = models.CharField(_('caption'),
@@ -15,6 +17,7 @@ class Introduction(models.Model):
 				blank=True,
 				null=True)
 	image_description = models.TextField(verbose_name="Image Text", null=True,blank=True)
+	tags = TaggableManager()
 
 	class Meta:
 		verbose_name = "Introduction"

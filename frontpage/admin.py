@@ -1,12 +1,15 @@
 from django import forms
 from django.contrib import admin
 from ckeditor.widgets import CKEditorWidget
+#from ckeditor_uploader.widgets import CKEditorUploadingWidget
 from .models import Introduction
 
 class IntroductionAdminForm(forms.ModelForm):
 
 	text = forms.CharField(widget=CKEditorWidget())
-	image_description = forms.CharField(widget=CKEditorWidget(), required=False)
+	#text = forms.CharField(widget=CKEditorUploadingWidget())
+	image_description = forms.CharField(widget=CKEditorWidget(), 
+					required=False)
 
 	class Meta:
 		model = Introduction

@@ -52,6 +52,9 @@
 
 					<li class="sub-page"><a href="{% url 'photologue:pl-gallery' slug='doorknobs' %}">Doorknobs</a></li>
 					<li class="sub-page"><a href="{% url 'photologue:pl-gallery' slug='miniature-paintings' %}">Miniature Paintings</a></li>
+					<li class="sub-page"><a href="{% url 'photologue:pl-gallery' slug='rectangular-enamel-box' %}">Rectangular Enamel Box</a></li>
+					<li class="sub-page"><a href="{% url 'photologue:pl-gallery' slug='tribute-anthony-phillips' %}">Tribute to Anthony Phillips</a></li>
+					<li class="sub-page"><a href="{% url 'photologue:gallery-list' %}">View All Galleries</a></li>
 					</ul>
 			    </li>
 			   <li class="projects dropdown">
@@ -60,15 +63,17 @@
 			        </a>
 					<ul class="dropdown-menu">
 
-					<li class="sub-page"><a href="{% url 'photologue-custom:pl-projects' slug='enamel-cross-project' %}">Enamel Cross</a></li>
+					<li class="sub-page"><a href="{% url 'photologue:pl-gallery' slug='enamel-cross-project' %}">Enamel Cross</a></li>
+					<li class="sub-page"><a href="{% url 'photologue:pl-gallery' slug='miniature-painting-projects' %}">Painting Progressions</a></li>
+					<li class="sub-page"><a href="{% url 'photologue:pl-gallery' slug='cloisonne-enamel-doorknobs-project' %}">Cloisonne doorknobs</a></li>
 			    </li>
 			   </ul>
 			</li>
 			
 			   {% url 'zinnia:entry_archive_index' as entry_archive_index_url %}
-		   	   <li class="blog{% if entry_archive_index_url in request.path %} active{% endif %}">
+		   	   <li class="webblog{% if entry_archive_index_url in request.path %} active{% endif %}">
 				<a href="{{ entry_archive_index_url }}">
-					{% trans "Blog" %}
+					{% trans "Weblog" %}
 				</a>
 			   </li>
 
@@ -89,7 +94,13 @@
         	{% block my_content %}{% endblock %}
         </div>
 	<footer class="container">
-		{% block footer_content %}{% endblock %}
+		{% block my_footer_content %}
+		<div class="row">
+			<div class="hfeed col-xs-12"> 
+				Copyright © 2017 MDMorris. All Rights Reserved.
+			</div>
+		</div>
+		{% endblock %}
 	</footer>
         <script src="{% static "zinnia_bootstrap/bootstrap/js/jquery.js" %}"></script>
         <script src="{% static "zinnia_bootstrap/bootstrap/js/bootstrap.min.js" %}"></script>

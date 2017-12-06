@@ -45,3 +45,4 @@ admin.site.register(Gallery, GalleryAdmin)
 
 admin.site.unregister(Photo)
 admin.site.register(Photo, PhotoAdmin)
+

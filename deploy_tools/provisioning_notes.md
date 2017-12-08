@@ -33,3 +33,9 @@ Assume we have a user account at /home/username
          ├── source
          ├── static
          └── virtualenv
+
+## Change photologue's manager to order by date_added, this is done in the site-packages of the virtualenv
+* change ../virtualenv/lib/python3.5/site-packages/photologue/managers.py for the one given in this directory.
+
+* use sftp mark@server:path-to-photologue-manager
+* push managers.py

@@ -9,7 +9,11 @@ class Introduction(models.Model):
 	slug = models.CharField(_('Slug'), max_length=200,
 				unique=True,
 				blank=True)
-	
+
+	meta_description = models.TextField(
+			verbose_name="Meta Description", 
+			null = True, 
+			blank=True)	
 	text = models.TextField(verbose_name="Text")
 	picture = models.ForeignKey(Photo, null=True, blank=True)
 	image_caption = models.CharField(_('caption'),

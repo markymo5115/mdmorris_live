@@ -1,4 +1,12 @@
 {% extends "my_zinnia_bootstrap:zinnia/navigation.html" %}
+{% block title %}
+	{{ intro.title }}
+{% endblock %}
+{% block meta_data %}
+{% if intro.meta_description != None %}
+<meta name="description" content="{{ intro.meta_description }}" />
+{% endif %}
+{% endblock meta_data %}
 {% block my_content %}
 <div class="container-fluid">
 	<div class="row">
@@ -10,3 +18,4 @@
 	</div>
 </div>
 {% endblock my_content %}
+

@@ -1,10 +1,22 @@
 {% load i18n static %}
 <!DOCTYPE html>
 <html lang="en">
-    <head>
+<head>
+{% block google_analytics %}
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-35415224-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-35415224-1');
+</script>
+{% endblock google_analytics %}
 	<link rel="shortcut icon" href="{% static "zinnia_bootstrap/img/favicon.ico" %}"/>
         <meta charset="utf-8">
         <title>{% block title %}{% endblock %}</title>
+	{% block meta_data %}{% endblock meta_data %}
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<!-- Bootstrap -->
 		<link href="{% static "zinnia_bootstrap/bootstrap/css/bootstrap.min.css" %}" rel="stylesheet" media="screen">
@@ -52,7 +64,10 @@
 
 					<li class="sub-page"><a href="{% url 'photologue:pl-gallery' slug='doorknobs' %}">Doorknobs</a></li>
 					<li class="sub-page"><a href="{% url 'photologue:pl-gallery' slug='miniature-paintings' %}">Miniature Paintings</a></li>
+					<li class="sub-page"><a href="{% url 'photologue:pl-gallery' slug='medieval-enamel-cross' %}">Medieval Enamel Cross</a></li>
 					<li class="sub-page"><a href="{% url 'photologue:pl-gallery' slug='rectangular-enamel-box' %}">Rectangular Enamel Box</a></li>
+					<li class="sub-page"><a href="{% url 'photologue:pl-gallery' slug='sample-floor-tile-strips' %}">Floor Tiling Strips</a></li>
+					<li class="sub-page"><a href="{% url 'photologue:pl-gallery' slug='watch-case' %}">Watch Case</a></li>
 					<li class="sub-page"><a href="{% url 'photologue:pl-gallery' slug='tribute-anthony-phillips' %}">Tribute to Anthony Phillips</a></li>
 					<li class="sub-page"><a href="{% url 'photologue:gallery-list' %}">View All Galleries</a></li>
 					</ul>
@@ -66,7 +81,10 @@
 					<li class="sub-page"><a href="{% url 'photologue:pl-gallery' slug='enamel-cross-project' %}">Enamel Cross</a></li>
 					<li class="sub-page"><a href="{% url 'photologue:pl-gallery' slug='miniature-painting-projects' %}">Painting Progressions</a></li>
 					<li class="sub-page"><a href="{% url 'photologue:pl-gallery' slug='cloisonne-enamel-doorknobs-project' %}">Cloisonne doorknobs</a></li>
-			    </li>
+					<li class="sub-page"><a href="{% url 'photologue:pl-gallery' slug='cloisonne-amazon-frog' %}">Cloisonne Amazon Frog</a></li>
+					<li class="sub-page"><a href="{% url 'photologue:pl-gallery' slug='watch-case-progress' %}">Watch Case Progress</a></li>
+					<li class="sub-page"><a href="{% url 'photologue:pl-gallery' slug='making-elliptical-enamel-plaques' %}">Elliptical Enamel Plaques</a></li>
+					<li class="sub-page"><a href="{% url 'photologue:pl-gallery' slug='trivet-elliptical-plaque' %}">Trivet for Elliptical Plaques</a></li>
 			   </ul>
 			</li>
 			
@@ -94,16 +112,24 @@
         	{% block my_content %}{% endblock %}
         </div>
 	<footer class="container">
-		{% block my_footer_content %}
 		<div class="row">
-			<div class="hfeed col-xs-12"> 
-				Copyright © 2017 MDMorris. All Rights Reserved.
-			</div>
+			{% block my_footer_content %}
+				<div class="hfeed col-lg-10"> 
+					Copyright © 2018 MDMorris. All Rights Reserved.
+				</div>
+			{% endblock my_footer_content %}
+			{% block inline_social %}
+				<div class="hfeed col-lg-2">
+					<div class="addthis_inline_follow_toolbox"></div>
+				</div>
+			{% endblock inline_social %}
 		</div>
-		{% endblock %}
 	</footer>
         <script src="{% static "zinnia_bootstrap/bootstrap/js/jquery.js" %}"></script>
         <script src="{% static "zinnia_bootstrap/bootstrap/js/bootstrap.min.js" %}"></script>
 	<script src="{% static "zinnia_bootstrap/bootstrap/js/project.js" %}"></script>
-    </body>
+ 	{% block addthis %}
+		<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5a4cd4b7ce4e2702"></script>
+	{% endblock addthis %}
+   </body>
 </html>

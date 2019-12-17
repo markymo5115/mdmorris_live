@@ -31,17 +31,19 @@ from zinnia.sitemaps import AuthorSitemap
 from zinnia.sitemaps import CategorySitemap
 from zinnia.sitemaps import EntrySitemap
 from zinnia.sitemaps import TagSitemap
+from photologue.sitemaps import GallerySitemap, PhotoSitemap
+from django.views.generic import TemplateView
 
 import photologue_custom
 
 urlpatterns = [
-   url(r'^home', frontpage_views.home_view, name='home'),
-   url(r'^about-me', frontpage_views.aboutme_view, name='about_me'),
-   url(r'^how-to-order', RedirectView.as_view(url='home', permanent=True), name='commission'),
-   url(r'^contact-mark', frontpage_views.contactme_view, name='contact-me'),
+   url(r'^home/$', frontpage_views.home_view, name='home'),
+   url(r'^about-me/$', frontpage_views.aboutme_view, name='about_me'),
+#   url(r'^how-to-order', RedirectView.as_view(url='home', permanent=True), name='commission'),
+   url(r'^contact-mark/$', frontpage_views.contactme_view, name='contact-me'),
    url(r'^links/(?P<slug>[\-\d\w]+)/$', frontpage_views.links_view, name='links'),
-   url(r'^buy-a-necklace', RedirectView.as_view(url='home', permanent=True), name='buy-a-necklace'),
-  url(r'^view-cart', RedirectView.as_view(url='home', permanent=True), name='view-cart'),
+#   url(r'^buy-a-necklace', RedirectView.as_view(url='home', permanent=True), name='buy-a-necklace'),
+#  url(r'^view-cart', RedirectView.as_view(url='home', permanent=True), name='view-cart'),
 #  url(r'^blog', RedirectView.as_view(url='photologue/', permanent=True), name='blog'),
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     url(r'^admin/', admin.site.urls),
@@ -60,7 +62,9 @@ sitemaps = {
 	'tags': TagSitemap,
 	'blog':EntrySitemap,
 	'authors': AuthorSitemap,
-	'categories': CategorySitemap
+	'categories': CategorySitemap,
+	'photologue_galleries': GallerySitemap,
+	'photologue_photos': PhotoSitemap,
 }
 
 urlpatterns += [
@@ -84,6 +88,12 @@ urlpatterns += [
 	url(r'^403/$', permission_denied),
 	url(r'^404/$', page_not_found),
 	url(r'^500/$', server_error),
+]
+
+#Add Bing Verify Ownership Authentication and Google verification too
+urlpatterns += [
+	url(r'^BingSiteAuth\.xml', TemplateView.as_view(template_name='zinnia/BingSiteAuth.xml', content_type='text/xml')),
+	url(r'^googled9943244a1802ac7\.html', TemplateView.as_view(template_name='zinnia/googled9943244a1802ac7.html', content_type='text/html')),
 ]
 
 if settings.DEBUG:

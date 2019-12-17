@@ -23,10 +23,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'q3hyc$+gx3cf3p%10crgzs$&8zx__a0cwwr@k%k+zr)56+xkhs'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False;
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["www.mdmorris.co.uk","mdmorris.co.uk"]
 
+# mdmorris.co.uk will be redirected to www.mdmorris.co.uk
+PREPEND_WWW = True
 
 # Application definition
 
@@ -92,6 +94,8 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'mdmorris_blog.wsgi.application'
+#WSGI_APPLICATION = '../../passenger_wsgi.application'
+#WSGI_APPLICATION = os.path.abspath(os.path.join(BASE_DIR, '../passenger_wsgi.application'))
 
 
 # Database
@@ -107,9 +111,9 @@ WSGI_APPLICATION = 'mdmorris_blog.wsgi.application'
 DATABASES = {
 	'default': {
 		'ENGINE': 'django.db.backends.mysql',
-		'NAME': 'mdmorris',
-		'USER':'mark',
-		'PASSWORD':'04sirroMDM13',
+		'NAME': 'mdmorris_mdmorris',
+		'USER':'mdmorris_root',
+		'PASSWORD':'01hostpresto01',
 		'HOST':'localhost',
 		'PORT':'',
 	}
@@ -157,8 +161,10 @@ USE_TZ = True
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 
-MEDIA_ROOT = os.path.abspath(os.path.join(BASE_DIR, '../media')) 
-STATIC_ROOT = os.path.abspath(os.path.join(BASE_DIR, '../static'))
+MEDIA_ROOT = os.path.abspath(os.path.join(BASE_DIR, '../../../public_html/media')) 
+#MEDIA_ROOT = os.path.abspath(os.path.join(BASE_DIR, '../media'))
+
+STATIC_ROOT = os.path.abspath(os.path.join(BASE_DIR, '../../../public_html/static'))
 
 
 #STATICFILES_DIRS = [BASE_DIR,]

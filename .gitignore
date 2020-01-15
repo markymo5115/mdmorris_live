@@ -2,3 +2,8 @@
 */migrations_zinnia/*
 */__pycache__/*
 __pychace__*
+mdmorris_blog/settings.py
+*.pyc
+tmp
+transfer_mysql_db
+transfer_db

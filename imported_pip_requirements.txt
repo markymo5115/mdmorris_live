@@ -1,5 +1,5 @@
 beautifulsoup4==4.6.0
-Django==1.10
+Django==1.11.28
 django-app-namespace-template-loader==0.4.1
 django-blog-zinnia==0.18.1
 django-ckeditor==5.3.0
